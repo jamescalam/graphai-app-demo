@@ -1,0 +1,49 @@
+[project]
+name = "api"
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "Aurelio AI"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.12.7,<3.13"
+fastapi = ">=0.115.6,<0.116.0"
+pydantic = ">=2.10.5,<3.0.0"
+graphai-lib = ">=0.0.1,<0.0.2"
+uvicorn = ">=0.34.0,<0.35.0"
+uvloop = ">=0.21.0,<0.22.0"
+redis = ">=5.2.1,<6.0.0"
+opentelemetry-api = "^1.27.0"
+opentelemetry-sdk = "^1.27.0"
+opentelemetry-instrumentation-fastapi = "^0.48b0"
+opentelemetry-instrumentation-logging = "^0.48b0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.9"
+mypy = "^1.12.1"
+ipykernel = "^6.29.0"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle
+    "F",  # pyflakes
+    "UP", # pyupgrade,
+    "I",  # isort
+    "B006", # mutable defaults
+]
+# Never enforce `E501` (line length violations).
+ignore = ["E501"]
+fixable = ["ALL"]
+exclude = ["*.ipynb"]
